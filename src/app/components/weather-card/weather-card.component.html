@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-sm-6 col-md-4 my-3 pl-3" *ngFor="let weatherObj of weatherData">
+    <div class="card">
+      <div class="card-title card-header">
+        City : {{ weatherObj?.name }}
+      </div>
+
+      <div class="card-body">
+        <p class="card-text">
+          Average temperature : {{ weatherObj?.main?.temp }} &#8451;
+        </p>
+
+        <p class="card-text">
+          Pressure : {{ weatherObj.main?.pressure }} PSI
+        </p>
+
+        <p class="card-text">
+          Humidity: {{weatherObj.main.humidity}}%
+        </p>
+
+        <p class="card-text mb-0">
+          Description : {{ weatherObj.weather[0]?.description }}
+          <br />
+          <span>
+            <img src="http://openweathermap.org/img/w/{{weatherObj.weather[0]?.icon}}.png" alt="Site Logo" width="50" height="50">
+          </span>
+        </p>
+
+        <div class="btn-action">
+          <button class="btn btn-primary" (click)="knowMoreDetails(weatherObj)">Know more</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

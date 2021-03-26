@@ -1,0 +1,36 @@
+<div id="weatherDetailsId" class="card mt-3 mx-n2" *ngIf="forecastModel">
+  <div class="card-title card-header">
+    {{ forecastModel.city?.name }} | {{ weatherData?.main?.temp }} &#8451; |
+    <span>
+      <img src="http://openweathermap.org/img/w/{{weatherData.weather[0]?.icon}}.png" alt="Site Logo" width="50" height="50">
+    </span>
+  </div>
+
+  <div class="weather-details-date">
+    <strong> Date : {{ todayDate | date:'EEEE, MMMM d, y' }} </strong>
+  </div>
+
+  <ul class="list-group list-group-flush" *ngFor="let forecastObj of forecastModel?.list">
+
+    <li class="list-group-item">
+      <strong><u> Time : {{ forecastObj.dt_txt | date:'h:mm a' }} </u></strong>
+      <br />
+
+      Average temperature : <strong>{{ forecastObj.main?.temp }} &#8451;</strong>
+      <br />
+
+      Pressure : <strong>{{ forecastObj.main?.pressure }} PSI</strong>
+      <br />
+
+      Humidity: <strong>{{forecastObj.main?.humidity}}%</strong>
+      <br />
+
+      Description : <strong>{{ forecastObj.weather[0]?.description }}</strong>
+      <br />
+
+      <span>
+        <img src="http://openweathermap.org/img/w/{{forecastObj.weather[0]?.icon}}.png" alt="Site Logo" width="50" height="50">
+      </span>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,29 @@
+<div class="container-fluid">
+
+  <div class="row d-flex justify-content-center text-center mb-3">
+    <h1>Welcome to {{ title }}!</h1>
+  </div>
+
+  <!-- Spinner -->
+  <ng-container *ngIf="shouldShowSpinner">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!shouldShowSpinner && weatherData">
+    <!-- 5 city weather data -->
+    <app-weather-card [weatherData]="weatherData" (knowMoreEvent)="onKnowMoreDetails($event)"></app-weather-card>
+
+    <!-- Hourly data of selected city -->
+    <app-forecast-details [forecastModel]="forecastModel" [weatherData]="selectedWeatherData"></app-forecast-details>
+  </ng-container>
+
+  <!-- Network or API issue message -->
+  <ng-container *ngIf="!shouldShowSpinner && !weatherData">
+    <div class="d-flex justify-content-center">
+      <span class="network-issue-text">Some thing went wrong...</span>
+    </div>
+  </ng-container>
+</div>
